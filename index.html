@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <style type="text/css">
+            body{
+                padding: 20px 20px 40px 20px;
+            }
+            button{
+                font-size: 14px;
+            }
+
+            button, textarea, select {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                border-style: none;
+            }
+
+            .btnStyle1 {
+                background-color:#33bdef;
+                display:inline-block;
+                cursor:pointer;
+                color:#ffffff;
+                font-family:Arial;
+                font-size:14px;
+                padding:10px 15px;
+                text-decoration:none;
+                border-radius: 5px;
+            }
+            .btnStyle1:hover {
+                background-color:#019ad2;
+            }
+            .btnStyle1:active {
+                position:relative;
+                top:1px;
+            }
+
+            #toDoApp{
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            .toDoApp__addUi{
+                margin: 0 0 3em 0;
+                padding: 1em;
+                background: #ccc;
+            }
+            .toDoApp__addUi__txt{
+                margin: 0 1em 0 0;
+                padding: 5px;
+                width: 50%;
+                font-size: 14px;
+            }
+            .toDoApp__main{
+                margin: 0 0 3em 0;
+            }
+            .toDoApp__main .btnDel{
+                margin: 0 0 2em 0;
+            }
+            .toDoApp__main .btnRouter{
+                margin: 1em 0;
+                display: block;
+            }
+            .toDoApp__listBox{
+                margin: 0 0 3em 0;
+                padding: 0;
+            }
+            .toDoApp__listBox li{
+                list-style: none;
+                padding: 0.5em 0;
+                border-bottom: solid 1px #ccc;
+            }
+            .toDoApp__listBox li:first-child{
+                border-top: solid 1px #ccc;
+            }
+            .toDoApp__list__chk{
+                display: inline-block;
+                margin: 0 20px 0 0;
+            }
+            .toDoApp__li__title{
+                display: inline-block;
+                margin: 0 20px 0 0;
+            }
+            .toDoApp__dataUi{
+                padding: 1em;
+                border: solid 1px #ccc;
+            }
+            .toDoApp__dataTable{
+                text-align: left;
+            }
+            .toDoApp__dataTable th{
+                padding: 0 2em 0 0;
+                font-size: 14px;
+            }
+            .btnDelChked{
+              margin: 0 0 2em 0;
+              background: #888888;
+              color: #fff;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- テンプレート：入力UI部分 -->
+        <script type="text/x-handlebars-template" id="template-toDoApp__addUi">
+            <input class="toDoApp__addUi__txt" type="text"><button class="toDoApp__addUi__btnAdd btnStyle1">追加する</button>
+        </script>
+
+        <!-- テンプレート：リスト部分 -->
+        <script type="text/x-handlebars-template" id="template-toDoApp__list">
+            <input id="{{ itemId }}" class="toDoApp__list__chk" type="checkbox" name="title" value=""><label for="{{ itemId }}" class="toDoApp__li__title">{{ title }}</label><a class="btnDel" href="">×</a>
+        </script>
+
+        <!-- テンプレート：メイン部分 -->
+        <script type="text/x-handlebars-template" id="template-toDoApp__main">
+            <ul class="toDoApp__listBox"></ul>
+            <button class="btnDelChked btnStyle1">選択した項目をまとめて消す</button>
+            <button class="btnRouter btnRouterRoot btnStyle1">ルートにルーティング</button>
+            <button class="btnRouter btnRouterHoge btnStyle1">#hogeにルーティング</button>
+            <button class="btnRouter btnRouterSearch btnStyle1">#search/検索文字列 にルーティング</button>
+        </script>
+
+        <!-- テンプレート：データUI部分 -->
+        <script type="text/x-handlebars-template" id="template-dataView">
+            <tr>
+                <th>合計 : </th>
+                <td>{{ sum }}</td>
+            </tr>
+            <tr>
+                <th>チェック : </th>
+                <td>{{ compNum }}</td>
+            </tr>
+        </script>
+
+        <div id="toDoApp">
+            <div class="toDoApp__addUi"></div>
+            <div class="toDoApp__main"></div>
+            <div class="toDoApp__dataUi"></div>
+        </div>
+
+    <script src="js/lib/jquery-2.2.3.min.js" charset="utf-8"></script>
+    <script src="js/lib/underscore-min.js" charset="utf-8"></script>
+    <script src="js/lib/handlebars-v4.0.5.js" charset="utf-8"></script>
+    <script src="js/lib/backbone-min.js" charset="utf-8"></script>
+    <script src="js/lib/backbone.marionette.min.js" charset="utf-8"></script>
+    <!-- <script src="/js/lib/backbone.stickit.js" charset="utf-8"></script> -->
+    <script src="js/index.js" charset="utf-8"></script>
+
+    </body>
+</html>
